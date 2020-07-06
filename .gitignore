@@ -1,6 +1,7 @@
 # dependencies
 package-lock.json
 /*/node_modules
-
+/server/src/shared
+/server/src/area/*/mappers
 # production
 /server/dist
