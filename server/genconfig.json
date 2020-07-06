@@ -1,0 +1,8 @@
+{
+    "check":
+        {
+            "folders":[
+                "./src/area/students/models"
+            ]
+        }
+}

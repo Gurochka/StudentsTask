@@ -1,0 +1,19 @@
+{
+    "swagger": {
+        "outputDirectory": "./dist/server/server/src",
+        "entryFile": "./src/app.ts",
+        "host": "localhost:3000",
+        "version": "1.0",
+        "name": "Students WEB API",
+        "description": "",
+        "license": "",
+        "basePath": "/",
+        "securityDefinitions": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "x-access-token",
+                "in": "header"
+            }
+        }
+    }
+}

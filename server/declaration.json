@@ -1,0 +1,25 @@
+[
+  {
+    "db": "postgres",
+    "name" : "students_task",
+    "dbhost" : "dbHost",
+    "dbport" : "dbPort",
+    "dbusername" : "dbUsername",
+    "dbpassword" : "dbPassword",
+    "dbdatabase" : "dbBase",
+    "pathToDBWrappers": "./src/shared/dbWrappers",
+   "schemas" : 
+   [
+      {
+        "namespace": "student",
+        "recreate": true,
+        "tables":
+        [
+          {
+            "pathToModel": "./src/area/students/models/student"
+          }
+        ]
+      }
+    ]
+  }
+]
