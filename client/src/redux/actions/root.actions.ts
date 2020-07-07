@@ -5,7 +5,7 @@ export type AppDispatch = typeof store.dispatch
 
 export enum ActionType {
     SET_STUDENTS = `[Student] Set list`,
-    SET_STUDENT = '[Student] Set active'    
+    SET_STUDENT = '[Student] Set active'
 }
 
 export class BaseAction<T = any> {

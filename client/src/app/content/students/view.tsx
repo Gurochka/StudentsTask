@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@material-ui/core';
 
-export const View: React.FC = () => {
+import { IModel } from './model';
+
+export const View = (props: IModel) => {
     return (
         <Box width="50%" mx="auto" my={5}>
             <TableContainer component={Paper}>
@@ -15,6 +17,15 @@ export const View: React.FC = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        {props.students && props.students.map((student) => (
+                            <TableRow key={student.id}>
+                                <TableCell component="th" scope="row">
+                                    {student.firstname} {student.lastname}
+                                </TableCell>
+                                <TableCell align="right">{student.birthdate}</TableCell>
+                                <TableCell align="right">{student.assessment}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </TableContainer>

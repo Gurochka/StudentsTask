@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import * as dotenv from 'dotenv';
+import * as cors from 'cors';
 
 if (!process.env.dbHost) {
     dotenv.config({ path: '.env' });
@@ -17,6 +18,7 @@ import { studentDBWrapper } from './shared/dbWrappers/students_task/student/stud
 import { StudentCtrl } from './area/students/controllers';
 
 const app = express();
+app.use(cors());
 
 let swaggerDocument: any = null;
 try {

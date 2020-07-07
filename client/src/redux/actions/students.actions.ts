@@ -2,8 +2,8 @@ import axios from 'axios';
 import { ActionType, AppDispatch } from './root.actions';
 
 export const getStudents = () => {
-    return (dispatch:AppDispatch) => {
-        return axios.get('/students')
-            .then(res => dispatch({ type: ActionType.SET_STUDENT, payload: res }))
-    }
-}
+    return async (dispatch: AppDispatch) => {
+        const students = await axios.get('/students');
+        dispatch({ type: ActionType.SET_STUDENTS, payload: students.data });
+    };
+};
