@@ -1,0 +1,5 @@
+node_modules/
+piblic/
+build/
+src/setupTests.ts
+src/registerServiceWorker.ts
