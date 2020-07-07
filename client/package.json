@@ -30,6 +30,7 @@
     "@types/redux-form": "^8.2.7",
     "@typescript-eslint/eslint-plugin": "2.19.0",
     "@typescript-eslint/parser": "2.19.0",
+    "copyfiles": "^2.3.0",
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.18.3",
     "node-sass": "4.14.1",
@@ -37,10 +38,10 @@
     "typescript": "3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "react-scripts start",
+    "copy-common": "copyfiles -a -V \"../common/**\" \"./src/common\"",
+    "start": "npm run copy-common && npm run start-dev",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .ts,.tsx"
   },
   "eslintConfig": {

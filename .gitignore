@@ -3,5 +3,6 @@ package-lock.json
 /*/node_modules
 /server/src/shared
 /server/src/area/*/mappers
+/client/src/common
 # production
 /server/dist
