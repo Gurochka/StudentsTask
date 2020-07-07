@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'bootstrap';
+
+body {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    background-color: $white;
+    color: $gray-800;
+}
