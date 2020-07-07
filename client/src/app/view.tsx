@@ -1,9 +1,11 @@
 import React from 'react';
+import { RouterContent } from './routes';
+import { BrowserRouter } from 'react-router-dom';
 
 export const View = () => {
-  return (
-    <div className="App">
-      <h1>I'm here!</h1>
-    </div>
-  );  
+    return (
+        <BrowserRouter>
+            { RouterContent }
+        </BrowserRouter>
+    );  
 }
