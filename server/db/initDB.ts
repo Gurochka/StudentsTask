@@ -22,7 +22,7 @@ const createDB = async (): Promise<void> => {
         const dropStr = `DROP DATABASE ${process.env.dbBase}`;
         await db.query(dropStr);
 
-        logger.message(`DROP DATABASE ${process.env.dbBase} complete`)
+        logger.message(`DROP DATABASE ${process.env.dbBase} complete`);
     }
     const str = `CREATE DATABASE ${process.env.dbBase}`;
 
@@ -36,10 +36,10 @@ const createDB = async (): Promise<void> => {
     connectionString = `postgres://${process.env.dbUsername}:${process.env.dbPassword}@` +
     `${process.env.dbHost}:${process.env.dbPort}/${process.env.dbBase}`;
     db = pgp(connectionString);
-    
+
     logger.message(`CREATE DATABASE SCHEMAS...`);
     await db.query(`CREATE SCHEMA student`);
-    
+
     logger.message(`CREATE SCHEMAS complete`);
     pgp.end();
 };
@@ -61,7 +61,7 @@ const createStudent = async () => {
     student.assessment = Assessment.B;
 
     await studentDBWrapper.getEntityManager().save(student);
-}
+};
 
 const initDB = async () => {
     await createDB();

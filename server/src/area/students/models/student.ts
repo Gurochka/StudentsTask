@@ -29,7 +29,7 @@ export class Student {
 
     @Column({ type: 'text', 'nullable': true })
     public middlename?: string;
-    
+
     @Column({ type: 'text', 'nullable': true })
     public birthdate?: string;
 
