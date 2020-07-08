@@ -4,9 +4,9 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconB
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import { IModel } from './model';
+import { IStateProps } from './model';
 
-export const View = (props: IModel) => {
+export const View = (props: IStateProps) => {
     return (
         <TableContainer>
             <Table aria-label="simple table">

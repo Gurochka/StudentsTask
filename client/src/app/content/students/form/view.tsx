@@ -1,7 +1,32 @@
 import React from 'react';
+import { Field, InjectedFormProps } from 'redux-form';
+import { Button, MenuItem } from '@material-ui/core';
+import { IStateProps } from './model';
+import { FormTextField } from '../../../shared/components/formTextField';
+import { FormSelectField } from '../../../shared/components/formSelectField';
 
-export const View = () => {
+interface PropsType extends InjectedFormProps, IStateProps {}
+
+export const View = (props: PropsType) => {
+    const field_classes = 'col-sm-6 pr-4 pb-4';
+    const { handleSubmit, pristine, submitting } = props;
+
     return (
-        <div>Student Form</div>
+        <form className="p-4 row justify-content-between" onSubmit={handleSubmit(props.onSubmit)} >
+            <Field name="firstname" label="First Name" className={ field_classes } component={FormTextField} />
+            <Field name="lastname" label="Last Name" className={ field_classes } component={FormTextField} />
+            <Field name="birthdate" label="Birthday" type="date" InputLabelProps={{ shrink: true }} className={ field_classes } component={FormTextField}/>
+
+            <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+            </Field>
+
+            <div className="d-flex justify-content-end w-100 pr-4">
+                <Button variant="contained" color="secondary" className="mr-4" type="submit" disabled={pristine || submitting}>Save</Button>
+                <Button variant="contained" type="button">Go back</Button>
+            </div>
+        </form>
     );
 };

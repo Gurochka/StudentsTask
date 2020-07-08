@@ -5,7 +5,7 @@ import { push } from 'connected-react-router';
 import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
 import { getStudents } from '../../../../redux/actions/students.actions';
 import { View } from './view';
-import { IModel } from './model';
+import { IStateProps } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
 export const Students: React.FC = () => {
@@ -16,7 +16,7 @@ export const Students: React.FC = () => {
         dispatch(getStudents());
     }, [dispatch]);
 
-    const props: IModel = {
+    const props: IStateProps = {
         students: students as StudentViewModel[],
         onClickDelete: (student_id) => { console.log(`delete student with id ${student_id}`); },
         onClickEdit: (student) => dispatch(push(`/students/${student.id}`))
