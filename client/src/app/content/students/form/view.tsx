@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field, InjectedFormProps } from 'redux-form';
 import { Button, MenuItem } from '@material-ui/core';
+
 import { IStateProps } from './model';
 import { FormTextField } from '../../../shared/components/formTextField';
 import { FormSelectField } from '../../../shared/components/formSelectField';
+import { assessments } from '../../../../common/constants';
 
-interface PropsType extends InjectedFormProps, IStateProps {}
-
-export const View = (props: PropsType) => {
+export const View = (props: IStateProps & InjectedFormProps) => {
     const field_classes = 'col-sm-6 pr-4 pb-4';
     const { handleSubmit, pristine, submitting } = props;
 
@@ -18,14 +18,16 @@ export const View = (props: PropsType) => {
             <Field name="birthdate" label="Birthday" type="date" InputLabelProps={{ shrink: true }} className={ field_classes } component={FormTextField}/>
 
             <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {
+                    assessments.map(assessment => (
+                        <MenuItem value={assessment} key={assessment}>{assessment}</MenuItem>
+                    ))
+                }
             </Field>
 
             <div className="d-flex justify-content-end w-100 pr-4">
                 <Button variant="contained" color="secondary" className="mr-4" type="submit" disabled={pristine || submitting}>Save</Button>
-                <Button variant="contained" type="button">Go back</Button>
+                <Button variant="contained" type="button" onClick={props.onGoBack}>Go back to list</Button>
             </div>
         </form>
     );

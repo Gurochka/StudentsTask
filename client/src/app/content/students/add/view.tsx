@@ -1,11 +1,14 @@
 import React from 'react';
-import { StudentForm } from '../form';
+import { Typography } from '@material-ui/core';
 
-export const View = () => {
+import { StudentForm } from '../form';
+import { IStateProps } from './model';
+
+export const View = (props: IStateProps) => {
     return (
         <>
-            <div>Add Student</div>
-            <StudentForm />
+            <Typography variant="h5" className="pt-3 pl-2">Add Student</Typography>
+            <StudentForm onSave={props.onAdd}/>
         </>
     );
 };

@@ -5,7 +5,7 @@ export const View = () => {
     return (
         <>
             <div>Edit Student</div>
-            <StudentForm />
+            <StudentForm onSave={() => { console.log('save!'); }}/>
         </>
     );
 };
