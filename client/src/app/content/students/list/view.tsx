@@ -27,10 +27,10 @@ export const View = (props: IModel) => {
                             <TableCell align="center">{student.birthdate}</TableCell>
                             <TableCell align="center">{student.assessment}</TableCell>
                             <TableCell align="right">
-                                <IconButton title="Edit student">
+                                <IconButton title="Edit student" onClick={() => props.onClickEdit(student)}>
                                     <EditOutlinedIcon color="primary" />
                                 </IconButton>
-                                <IconButton title="Delete student">
+                                <IconButton title="Delete student" onClick={() => props.onClickDelete(student.id)}>
                                     <DeleteOutlineOutlinedIcon color="primary" />
                                 </IconButton>
                             </TableCell>

@@ -6,15 +6,16 @@ import { EditStudent } from './content/students/edit';
 const routes: RouteConfig[] = [
     {
         path: '/',
+        exact: true,
         component: Home
-    },{
-        path: '/students/:student_id',
-        component: EditStudent
-    },{
+    }, {
         path: '/students/add',
         component: AddStudent
-    },{
-        component: Home // redirect to home if path not found
+    }, {
+        path: '/students/:student_id',
+        component: EditStudent
+    }, {
+        component: Home
     }
 ];
 

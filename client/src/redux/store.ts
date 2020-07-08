@@ -1,6 +1,8 @@
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import axios from 'axios';
+import { routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 
 import { rootReducer } from './reducers/root.reducers';
 
@@ -8,9 +10,11 @@ import { rootReducer } from './reducers/root.reducers';
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const enhancer = composeEnhancers(applyMiddleware(thunk));
+export const history = createBrowserHistory();
 
-export const store = createStore(rootReducer, enhancer);
+const enhancer = composeEnhancers(applyMiddleware(routerMiddleware(history), thunk));
+
+export const store = createStore(rootReducer(history), enhancer);
 
 // set base axios settings
 axios.defaults.baseURL = 'http://localhost:3002';

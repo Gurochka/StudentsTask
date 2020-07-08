@@ -1,15 +1,21 @@
 import React from 'react';
-import { RouterContent } from './routes';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+import { Box, Paper } from '@material-ui/core';
+
+import { RouterContent } from './routes';
+import { store, history } from '../redux/store';
 
 export const View: React.FC = () => {
     return (
         <Provider store={store}>
-            <BrowserRouter>
-                { RouterContent }
-            </BrowserRouter>
+            <ConnectedRouter history={history}>
+                <Box width="50%" mx="auto" my={5}>
+                    <Paper elevation={3} className="p-3">
+                        { RouterContent }
+                    </Paper>
+                </Box>
+            </ConnectedRouter>
         </Provider>
     );
 };
