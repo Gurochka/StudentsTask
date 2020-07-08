@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, AppState } from '../../../redux/actions/root.actions';
-import { getStudents } from '../../../redux/actions/students.actions';
+import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
+import { getStudents } from '../../../../redux/actions/students.actions';
 import { View } from './view';
 import { IModel } from './model';
-import { StudentViewModel } from '../../../common/model/student/studentViewModel';
+import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
 export const Students: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
