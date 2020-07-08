@@ -42,7 +42,7 @@
     "copy-common": "copyfiles -a -V \"../common/**\" \"./src/common\"",
     "start": "npm run copy-common && npm run start-dev",
     "build": "react-scripts build",
-    "lint": "eslint ./src --ext .ts,.tsx"
+    "lint": "eslint ./src --ext .ts,.tsx --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

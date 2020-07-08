@@ -1,7 +1,7 @@
 import { store } from '../store';
 
 export type AppState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = (...args: any[]) => Promise<void> | void;
 
 export enum ActionType {
     SET_STUDENTS = `[Student] Set list`,

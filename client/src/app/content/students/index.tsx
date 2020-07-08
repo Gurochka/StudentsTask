@@ -11,11 +11,11 @@ export const Students: React.FC = () => {
     const students = useSelector<AppState>(state => state.students.list);
 
     React.useEffect(() => {
-        getStudents()(dispatch);
-    }, []);
+        dispatch(getStudents());
+    }, [dispatch]);
 
     const props: IModel = {
         students: students as StudentViewModel[]
     };
-    return React.useMemo(() => View(props), [students]);
+    return React.useMemo(() => View(props), [props]);
 };
