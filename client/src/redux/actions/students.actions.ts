@@ -53,10 +53,10 @@ export const updateStudent = (student: StudentViewModel): ThunkAction<void, {}, 
 
 export const removeStudent = (student: StudentViewModel): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch, getState) => {
-        await axios.put<string>(`/students/${student.id}`);
+        await axios.delete<string>(`/students/${student.id}`);
         const { students: { active, list } }: any = getState();
 
-        if (active.id === student.id) {
+        if (active && active.id === student.id) {
             dispatch(setActiveStudent(null));
         }
         dispatch(setStudents(list.filter((s: StudentViewModel) => s.id !== student.id)));
