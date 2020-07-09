@@ -1,11 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { push } from 'connected-react-router';
 
 import { View } from './view';
 import { IStateProps } from './model';
+import { AppDispatch } from '../../../../redux/actions/root.actions';
+import { addStudent } from '../../../../redux/actions/students.actions';
 
 export const AddStudent = () => {
+    const dispatch = useDispatch<AppDispatch>();
+
     const props: IStateProps = {
-        onAdd: (data) => { console.log('add student:', data); }
+        onAdd: async (data) => {
+            await dispatch(addStudent(data));
+            dispatch(push('/students'));
+        }
     };
 
     return React.useMemo(() => View(props), [props]);

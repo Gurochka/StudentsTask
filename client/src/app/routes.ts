@@ -10,9 +10,10 @@ const routes: RouteConfig[] = [
         component: Home
     }, {
         path: '/students/add',
+        exact: true,
         component: AddStudent
     }, {
-        path: '/students/:student_id',
+        path: '/students/:studentId',
         component: EditStudent
     }, {
         component: Home

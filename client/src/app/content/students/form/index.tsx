@@ -9,12 +9,14 @@ import { View } from './view';
 
 const Form = reduxForm<any, any>({
     form: 'studentForm',
+    enableReinitialize: true
 })(View);
 
 export const StudentForm = (props: IFormProps) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const formProps: IStateProps = {
+        initialValues: props.student,
         onSubmit: props.onSave,
         onGoBack: () => dispatch(push('/students'))
     };

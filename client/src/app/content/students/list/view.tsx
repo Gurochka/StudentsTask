@@ -27,7 +27,7 @@ export const View = (props: IStateProps) => {
                             <TableCell align="center">{student.birthdate}</TableCell>
                             <TableCell align="center">{student.assessment}</TableCell>
                             <TableCell align="right">
-                                <IconButton title="Edit student" onClick={() => props.onClickEdit(student)}>
+                                <IconButton title="Edit student" onClick={() => props.onClickEdit(student.id)}>
                                     <EditOutlinedIcon color="primary" />
                                 </IconButton>
                                 <IconButton title="Delete student" onClick={() => props.onClickDelete(student.id)}>

@@ -19,7 +19,9 @@ export const Students: React.FC = () => {
     const props: IStateProps = {
         students: students as StudentViewModel[],
         onClickDelete: (student_id) => { console.log(`delete student with id ${student_id}`); },
-        onClickEdit: (student) => dispatch(push(`/students/${student.id}`))
+        onClickEdit: (student_id) => {
+            dispatch(push(`/students/${student_id}`));
+        }
     };
     return React.useMemo(() => View(props), [props]);
 };
