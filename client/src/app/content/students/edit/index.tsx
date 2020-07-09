@@ -5,13 +5,13 @@ import { push } from 'connected-react-router';
 
 import { View } from './view';
 import { IStateProps } from './model';
-import { getActiveStudent, setActiveStudent, updateStudent } from '../../../../redux/actions/students.actions';
+import { getActiveStudent, setActiveStudent, updateStudent, removeStudent } from '../../../../redux/actions/students.actions';
 import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
 export const EditStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const student = useSelector<AppState>(state => state.students.active);
+    const student = useSelector<AppState, StudentViewModel | null | undefined>(state => state.students.active);
 
     const { studentId } = useParams();
 
@@ -26,6 +26,11 @@ export const EditStudent = () => {
         student: student as StudentViewModel | null,
         onEdit: async (data) => {
             await dispatch(updateStudent(data));
+            dispatch(push(`/students`));
+        },
+        onDelete: async () => {
+            if (!student) return;
+            await dispatch(removeStudent(student));
             dispatch(push(`/students`));
         }
     };
