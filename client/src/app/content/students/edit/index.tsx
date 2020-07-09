@@ -29,9 +29,10 @@ export const EditStudent = () => {
             dispatch(push(`/students`));
         },
         onDelete: async () => {
-            if (!student) return;
-            await dispatch(removeStudent(student));
-            dispatch(push(`/students`));
+            if (student) {
+                await dispatch(removeStudent(student));
+                dispatch(push(`/students`));
+            }
         }
     };
 

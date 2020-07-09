@@ -24,10 +24,10 @@ export const Students: React.FC = () => {
             setStudentToRemove(student);
         },
         deleteStudent: async () => {
-            if (!studentToRemove) return;
-
-            await dispatch(removeStudent(studentToRemove))
-            setStudentToRemove(undefined);
+            if (studentToRemove) {
+                await dispatch(removeStudent(studentToRemove));
+                setStudentToRemove(undefined);
+            }
         },
         closePrompt: () => {
             setStudentToRemove(undefined);

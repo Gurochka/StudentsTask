@@ -13,11 +13,11 @@ export const View = (props: IStateProps) => {
     const { studentToRemove } = props;
     return (
         <>
-            <Prompt 
-                content= {`Do you want to remove user ${studentToRemove?.firstname} ${studentToRemove?.lastname}?`} 
-                show={!!studentToRemove} 
-                onAgree={props.deleteStudent} 
-                onClose={props.closePrompt} 
+            <Prompt
+                content= {`Do you want to remove user ${studentToRemove?.firstname} ${studentToRemove?.lastname}?`}
+                show={!!studentToRemove}
+                onAgree={props.deleteStudent}
+                onClose={props.closePrompt}
             />
 
             <TableContainer>

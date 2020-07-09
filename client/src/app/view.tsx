@@ -5,6 +5,7 @@ import { Box, Paper } from '@material-ui/core';
 
 import { RouterContent } from './routes';
 import { store, history } from '../redux/store';
+import { Notifier } from './shared/components/notifier';
 
 export const View: React.FC = () => {
     return (
@@ -15,6 +16,7 @@ export const View: React.FC = () => {
                         { RouterContent }
                     </Paper>
                 </Box>
+                <Notifier />
             </ConnectedRouter>
         </Provider>
     );

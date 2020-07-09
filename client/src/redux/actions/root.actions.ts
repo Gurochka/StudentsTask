@@ -8,10 +8,17 @@ export enum ActionType {
     SET_STUDENT = '[Student] Set active',
     ADD_STUDENT = '[Student] Add',
     REMOVE_STUDENT = '[Student] Delete',
-    UPDATE_STUDENT = '[Student] Update'
+    UPDATE_STUDENT = '[Student] Update',
+
+    NOTIFY = '[Notify] Show'
 }
 
 export class BaseAction<T = any> {
     type: ActionType;
     payload?: T;
+}
+
+export type Notify = {
+    type: "error" | "warning" | "info" | "success" | "primary" | "secondary";
+    message: string;
 }
