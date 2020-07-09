@@ -39,8 +39,14 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms', 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
-    app.get('/students', studentCtrl.getStudents);
-    app.post('/students', studentCtrl.create);
+    app.route('/students')
+        .get(studentCtrl.getStudents)
+        .post(studentCtrl.create);
+
+    app.route('/students/:studentId')
+        .get(studentCtrl.getActiveStudent)
+        .put(studentCtrl.update)
+        .delete(studentCtrl.remove);
 
     if (swaggerDocument) {
         const swaggerOptions = {

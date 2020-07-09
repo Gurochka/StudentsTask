@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx --fix",
     "doc": "swaggerGen -c ./swaggerConfig.json",
     "gen": "generateView && generateHistory && generateDatabase",
     "build": "npm run gen && npm run lint && tsc -p src",
     "deploy": "tsc -p db && node ./dist/db/server/db/initDB.js",
     "dev": "npm run lint && concurrently \"npm run doc\" \"tsc -w -p src\" \"nodemon --inspect=localhost:8630 dist/server/server/src/app.js\"",
-    "start": "node ./dist/server/server/src/app.js"
+    "start": "tsc -p src && node ./dist/server/server/src/app.js"
   },
   "author": "",
   "license": "ISC",

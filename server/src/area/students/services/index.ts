@@ -1,4 +1,4 @@
-import { Path, POST, GET } from 'typescript-rest';
+import { Path, POST, GET, PUT, DELETE, PathParam } from 'typescript-rest';
 import { Tags } from 'typescript-rest-swagger';
 
 import { StudentCreator } from '../../../../../common/model/student/studentCreator';
@@ -23,6 +23,17 @@ export class StudentService {
         return result;
     }
 
+    @GET
+    @Tags('students')
+    @Path('/students/:studentId')
+    public async getActiveStudent(@PathParam('studentId') studentId: number): Promise<StudentViewModel> {
+        const entityManager = studentDBWrapper.getEntityManager();
+
+        const student = await entityManager.findOne<Student>(Student, studentId);
+        const studentViewModel = StudentViewModelMapper.toStudentViewModel(student);
+        return studentViewModel;
+    }
+
     @POST
     @Tags('students')
     @Path('/students')
@@ -35,4 +46,27 @@ export class StudentService {
         return studentViewModel;
     }
 
+    @PUT
+    @Tags('students')
+    @Path('/students/:studentId')
+    public async update(editor: StudentViewModel): Promise<StudentViewModel> {
+        const student = StudentViewModelMapper.fromStudentViewModel(editor);
+
+        const entityManager = studentDBWrapper.getEntityManager();
+        const studentToEdit = await entityManager.save<Student>(student);
+        const studentViewModel = StudentViewModelMapper.toStudentViewModel(studentToEdit);
+        return studentViewModel;
+    }
+
+    @DELETE
+    @Tags('students')
+    @Path('/students/:studentId')
+    public async remove(
+            @PathParam('studentId') studentId: number): Promise<any> {
+        const entityManager = studentDBWrapper.getEntityManager();
+
+        const student = await entityManager.findOne<Student>(Student, studentId);
+        const result = await entityManager.remove(student);
+        return result;
+    }
 }
