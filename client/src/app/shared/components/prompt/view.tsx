@@ -3,6 +3,7 @@ import { Dialog, DialogTitle, DialogContentText, DialogContent, Button, DialogAc
 import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 
+import { LoadingButton } from '../loadingButton';
 import { IStateProps } from './model';
 
 const Transition = React.forwardRef(function Transition(
@@ -19,7 +20,9 @@ export const View = (props: IStateProps) => (
             <DialogContentText>{props.content}</DialogContentText>
         </DialogContent>
         <DialogActions>
-            <Button onClick={props.onAgree} color="primary">Yes, do it</Button>
+            <LoadingButton loading={props.agreed} onClick={props.onClickAgree}>
+                Yes, do it
+            </LoadingButton>
             <Button onClick={props.onClose}>Cancel</Button>
         </DialogActions>
     </Dialog>

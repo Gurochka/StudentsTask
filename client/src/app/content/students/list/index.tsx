@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
-import { getStudents, removeStudent } from '../../../../redux/actions/students.actions';
+import { getStudents, removeStudent, setStudents } from '../../../../redux/actions/students.actions';
 import { View } from './view';
 import { IStateProps } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
@@ -15,7 +15,8 @@ export const Students: React.FC = () => {
 
     React.useEffect(() => {
         dispatch(getStudents());
-    }, [dispatch]);
+        return () => { dispatch(setStudents(null)) }
+    }, []);
 
     const props: IStateProps = {
         students: students as StudentViewModel[],
@@ -27,6 +28,7 @@ export const Students: React.FC = () => {
             if (studentToRemove) {
                 await dispatch(removeStudent(studentToRemove));
                 setStudentToRemove(undefined);
+                dispatch(getStudents());
             }
         },
         closePrompt: () => {

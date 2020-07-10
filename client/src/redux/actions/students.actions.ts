@@ -33,33 +33,22 @@ export const getStudents = (): ThunkAction<void, {}, {}, AnyAction> => {
 export const addStudent = (studentData: StudentViewModel): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch, getState) => {
         const studentReq = await axios.post<StudentViewModel>(`/students`, studentData);
-        let { students: { list } }: any = getState();
-        list = list || [];
-        dispatch(setStudents([...list, studentReq.data]));
     };
 };
 
 export const updateStudent = (student: StudentViewModel): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch, getState) => {
         const updatedStudentReq = await axios.put<StudentViewModel>(`/students/${student.id}`, student);
-        const { students: { active, list } }: any = getState();
+        const { students: { active } }: any = getState();
 
         if (active.id === student.id) {
             dispatch(setActiveStudent(updatedStudentReq.data));
         }
-        dispatch(setStudents(list.map((s: StudentViewModel) => s.id === student.id ? updatedStudentReq.data : s)));
     };
 };
 
 export const removeStudent = (student: StudentViewModel): ThunkAction<void, {}, {}, AnyAction> => {
-    return async (dispatch, getState) => {
+    return async () => {
         await axios.delete<string>(`/students/${student.id}`);
-        const { students: { active, list } }: any = getState();
-        if (active && active.id === student.id) {
-            dispatch(setActiveStudent(null));
-        }
-        if (list) {
-            dispatch(setStudents(list.filter((s: StudentViewModel) => s.id !== student.id)));
-        }
     };
 };

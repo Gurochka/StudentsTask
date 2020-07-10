@@ -7,6 +7,7 @@ import { FormTextField } from '../../../shared/components/formTextField';
 import { FormSelectField } from '../../../shared/components/formSelectField';
 import { assessments } from '../../../../common/constants';
 import { required } from '../../../shared/validation';
+import { LoadingButton } from '../../../shared/components/loadingButton';
 
 export const View = (props: IStateProps & InjectedFormProps) => {
     const field_classes = 'col-sm-6 pr-4 pb-4';
@@ -28,7 +29,10 @@ export const View = (props: IStateProps & InjectedFormProps) => {
             </Field>
 
             <div className="d-flex justify-content-end w-100 pr-4">
-                <Button variant="contained" color="secondary" className="mr-4" type="submit" disabled={invalid || pristine || submitting}>Save</Button>
+                <LoadingButton variant="contained" color="secondary" className="mr-4" type="submit" 
+                    loading={submitting} disabled={invalid || pristine || submitting}>
+                    Save
+                </LoadingButton>
                 <Button variant="contained" type="button" onClick={props.onGoBack}>Go back to list</Button>
             </div>
         </form>
