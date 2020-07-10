@@ -16,8 +16,6 @@ axios.interceptors.response.use((response) => response,
     (error) => {
         const errorMessage: Notify = { type: 'error', message: 'Something bad happened with that request!' };
         store.dispatch({ type: ActionType.NOTIFY, payload: errorMessage });
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
         return Promise.reject(error);
     }
 );
