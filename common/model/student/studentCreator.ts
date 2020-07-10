@@ -2,7 +2,6 @@
 // tslint:disable
 /* eslint-disable */
 
-import { Assessment } from '../enums/assessment';
 
 export interface StudentCreator {
 
@@ -14,6 +13,6 @@ export interface StudentCreator {
 
   birthDate?: string;
 
-  assessment?: Assessment;
+  assessment?: string;
 
 }

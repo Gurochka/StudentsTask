@@ -27,9 +27,7 @@ export const setStudents = (students: ListStudentsState): ThunkAction<void, {}, 
 export const getStudents = (): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch, getState) => {
         const { students: { list } }: any = getState();
-        if (list && list.length < 10) {
-            // const studentsReq = list;
-        } else {
+        if (!list || list.length > 10) {
             const studentsReq = await axios.get<StudentViewModel[]>('/students');
             dispatch(setStudents(studentsReq.data));
         }

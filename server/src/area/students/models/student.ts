@@ -1,7 +1,6 @@
 import { GenerateView, IgnoreViewModel } from 'grunt-generate-view-model';
 import { GenerateHistory } from 'grunt-generate-history-model';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Assessment } from '../../../../../common/model/enums/assessment';
 
 @Entity(/*'student'*/)
 @GenerateHistory({
@@ -34,7 +33,7 @@ export class Student {
     @Column({ type: 'text', name: 'birth_date', 'nullable': true })
     public birthDate?: string;
 
-    @Column({ type: 'int', 'nullable': true })
-    public assessment?: Assessment;
+    @Column({ type: 'text', 'nullable': true })
+    public assessment?: string;
 
 }
