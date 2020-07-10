@@ -1,6 +1,3 @@
-import { store } from '../store';
-
-export type AppState = ReturnType<typeof store.getState>
 export type AppDispatch = (...args: any[]) => Promise<void> | void;
 
 export enum ActionType {
@@ -18,7 +15,7 @@ export class BaseAction<T = any> {
     payload?: T;
 }
 
-export type Notify = {
+export interface Notify {
     type: "error" | "warning" | "info" | "success" | "primary" | "secondary";
     message: string;
 }

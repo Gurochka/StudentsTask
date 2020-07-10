@@ -3,8 +3,9 @@ import { ActionType } from './root.actions';
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { StudentViewModel } from '../../common/model/student/studentViewModel';
+import { ActiveStudentState, ListStudentsState } from '../reducers/students.reducers';
 
-export const setActiveStudent = (student: StudentViewModel | null): ThunkAction<void, {}, {}, AnyAction> => {
+export const setActiveStudent = (student: ActiveStudentState): ThunkAction<void, {}, {}, AnyAction> => {
     return (dispatch) => {
         dispatch({ type: ActionType.SET_STUDENT, payload: student });
     };
@@ -17,7 +18,7 @@ export const getActiveStudent = (studentId: number | string): ThunkAction<void, 
     };
 };
 
-export const setStudents = (students: StudentViewModel[] | null): ThunkAction<void, {}, {}, AnyAction> => {
+export const setStudents = (students: ListStudentsState): ThunkAction<void, {}, {}, AnyAction> => {
     return (dispatch) => {
         dispatch({ type: ActionType.SET_STUDENTS, payload: students });
     };

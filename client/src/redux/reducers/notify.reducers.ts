@@ -1,6 +1,8 @@
 import { ActionType, BaseAction, Notify } from '../actions/root.actions';
 
-export const notifyReducer = (state: Notify | null = null, action: BaseAction<Notify>) => {
+export type NotifyState = Notify | null;
+
+export const notifyReducer = (state: NotifyState = null, action: BaseAction): NotifyState => {
     switch (action.type) {
         case ActionType.NOTIFY:
             return action.payload;

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { AppDispatch, AppState, Notify } from '../../../../redux/actions/root.actions';
+import { AppDispatch } from '../../../../redux/actions/root.actions';
+import { AppState } from '../../../../redux/reducers/root.reducers';
+import { notify } from '../../../../redux/actions/notify.actions';
+import { NotifyState } from '../../../../redux/reducers/notify.reducers';
 import { View } from './view';
 import { IStateProps } from './model';
-import { notify } from '../../../../redux/actions/notify.actions';
 
 export const Notifier = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const notifyOptions = useSelector<AppState, Notify | null | undefined>(state => state.notify);
+    const notifyOptions = useSelector<AppState, NotifyState>(state => state.notify);
     const [open, setOpen] = useState<boolean>(false);
 
     useEffect(() => {

@@ -1,7 +1,7 @@
-import { Notify } from '../../../../redux/actions/root.actions';
+import { NotifyState } from '../../../../redux/reducers/notify.reducers';
 
 export interface IStateProps {
    open: boolean;
-   notifyOptions: Notify;
+   notifyOptions: NotifyState;
    onClose: () => void;
 }

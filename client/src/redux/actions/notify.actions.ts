@@ -1,11 +1,12 @@
-import { ActionType, Notify } from './root.actions';
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import axios from 'axios';
 
+import { ActionType, Notify } from './root.actions';
+import { NotifyState } from '../reducers/notify.reducers';
 import { store } from '../store';
 
-export const notify = (message: Notify | null): ThunkAction<void, {}, {}, AnyAction> => {
+export const notify = (message: NotifyState): ThunkAction<void, {}, {}, AnyAction> => {
     return (dispatch) => {
         dispatch({ type: ActionType.NOTIFY, payload: message });
     };

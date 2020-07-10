@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
-import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
+import { AppDispatch } from '../../../../redux/actions/root.actions';
+import { AppState } from '../../../../redux/reducers/root.reducers';
 import { getStudents, removeStudent } from '../../../../redux/actions/students.actions';
 import { View } from './view';
 import { IStateProps } from './model';

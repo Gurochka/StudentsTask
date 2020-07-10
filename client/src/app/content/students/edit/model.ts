@@ -1,7 +1,8 @@
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
+import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
 
 export interface IModel {
-   student: StudentViewModel | null;
+   student: ActiveStudentState;
    deleting: boolean;
 }
 

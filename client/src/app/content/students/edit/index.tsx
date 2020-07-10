@@ -6,12 +6,13 @@ import { push } from 'connected-react-router';
 import { View } from './view';
 import { IStateProps } from './model';
 import { getActiveStudent, setActiveStudent, updateStudent, removeStudent } from '../../../../redux/actions/students.actions';
-import { AppDispatch, AppState } from '../../../../redux/actions/root.actions';
-import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
+import { AppDispatch } from '../../../../redux/actions/root.actions';
+import { AppState } from '../../../../redux/reducers/root.reducers';
+import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
 
 export const EditStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const student = useSelector<AppState, StudentViewModel | null | undefined>(state => state.students.active);
+    const student = useSelector<AppState, ActiveStudentState>(state => state.students.active);
     const [deleting, setDeleting] = useState(false);
 
     const { studentId } = useParams();
@@ -24,7 +25,7 @@ export const EditStudent = () => {
     }, []);
 
     const props: IStateProps = {
-        student: student as StudentViewModel | null,
+        student,
         deleting,
         onEdit: async (data) => {
             await dispatch(updateStudent(data));
