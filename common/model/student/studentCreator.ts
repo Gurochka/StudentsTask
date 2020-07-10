@@ -2,17 +2,18 @@
 // tslint:disable
 /* eslint-disable */
 
+import { Assessment } from '../enums/assessment';
 
 export interface StudentCreator {
 
-  firstname?: string;
+  firstName?: string;
 
-  lastname?: string;
+  lastName?: string;
 
-  middlename?: string;
+  middleName?: string;
 
-  birthdate?: string;
+  birthDate?: string;
 
-  assessment?: string;
+  assessment?: Assessment;
 
 }

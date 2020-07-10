@@ -15,7 +15,7 @@ export const View = (props: IStateProps) => {
     return (
         <>
             <Prompt
-                content= {`Do you want to remove user ${studentToRemove?.firstname} ${studentToRemove?.lastname}?`}
+                content= {`Do you want to remove user ${studentToRemove?.firstName} ${studentToRemove?.lastName}?`}
                 show={!!studentToRemove}
                 onAgree={props.deleteStudent}
                 onClose={props.closePrompt}
@@ -44,9 +44,9 @@ export const View = (props: IStateProps) => {
                                     props.students.map((student: StudentViewModel) => (
                                         <TableRow key={student.id}>
                                             <TableCell component="th" scope="row">
-                                                {student.firstname} {student.lastname}
+                                                {student.firstName} {student.lastName}
                                             </TableCell>
-                                            <TableCell align="center">{student.birthdate}</TableCell>
+                                            <TableCell align="center">{student.birthDate}</TableCell>
                                             <TableCell align="center">{student.assessment}</TableCell>
                                             <TableCell align="right">
                                                 <IconButton title="Edit student" onClick={() => props.onClickEdit(student.id)}>

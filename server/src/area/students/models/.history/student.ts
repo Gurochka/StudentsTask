@@ -4,6 +4,7 @@
 
 import {Entity, Column, PrimaryColumn, ColumnOptions, Index, PrimaryGeneratedColumn} from 'typeorm';
 import 'reflect-metadata';
+import { Assessment } from '../../../../../../common/model/enums/assessment';
 
 @Entity('h_student')
 export class hStudent {
@@ -19,13 +20,13 @@ export class hStudent {
     @Column('integer' )
     public id: number;
     @Column('text')
-    public firstname: string;
+    public first_name: string;
     @Column('text')
-    public lastname: string;
+    public last_name: string;
     @Column('text', {'nullable': true})
-    public middlename: string;
+    public middle_name: string;
     @Column('text', {'nullable': true})
-    public birthdate: string;
-    @Column('text', {'nullable': true})
-    public assessment: string;
+    public birth_date: string;
+    @Column('int', {'nullable': true})
+    public assessment: Assessment;
 }

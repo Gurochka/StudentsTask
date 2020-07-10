@@ -15,9 +15,9 @@ export const View = (props: IStateProps & InjectedFormProps) => {
 
     return (
         <form className="p-4 row justify-content-between" onSubmit={handleSubmit(props.onSubmit)} >
-            <Field name="firstname" label="First Name" className={ field_classes } component={FormTextField} validate={[required]}/>
-            <Field name="lastname" label="Last Name" className={ field_classes } component={FormTextField} validate={[required]} />
-            <Field name="birthdate" label="Birthday" type="date" InputLabelProps={{ shrink: true }}
+            <Field name="firstName" label="First Name" className={ field_classes } component={FormTextField} validate={[required]}/>
+            <Field name="lastName" label="Last Name" className={ field_classes } component={FormTextField} validate={[required]} />
+            <Field name="birthDate" label="Birthday" type="date" InputLabelProps={{ shrink: true }}
                 className={ field_classes } component={FormTextField} />
 
             <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>

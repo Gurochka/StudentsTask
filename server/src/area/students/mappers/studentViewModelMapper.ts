@@ -9,20 +9,20 @@ export class StudentViewModelMapper {
       public static toStudentViewModel(model: Student): StudentViewModel {
             let result : StudentViewModel = {};
             result.id = model.id ? +model.id : model.id;
-            result.firstname = model.firstname;
-            result.lastname = model.lastname;
-            result.middlename = model.middlename;
-            result.birthdate = model.birthdate;
+            result.firstName = model.firstName;
+            result.lastName = model.lastName;
+            result.middleName = model.middleName;
+            result.birthDate = model.birthDate;
             result.assessment = model.assessment;
             return result;
       }
       public static fromStudentViewModel(viewModel: StudentViewModel): Student {
             let result = new Student();
             result.id = viewModel.id;
-            result.firstname = viewModel.firstname;
-            result.lastname = viewModel.lastname;
-            result.middlename = viewModel.middlename;
-            result.birthdate = viewModel.birthdate;
+            result.firstName = viewModel.firstName;
+            result.lastName = viewModel.lastName;
+            result.middleName = viewModel.middleName;
+            result.birthDate = viewModel.birthDate;
             result.assessment = viewModel.assessment;
             return result;
       }
