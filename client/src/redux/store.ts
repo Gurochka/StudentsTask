@@ -17,4 +17,4 @@ const enhancer = composeEnhancers(applyMiddleware(routerMiddleware(history), thu
 export const store = createStore<AppState, any, any, any>(rootReducer(history), enhancer);
 
 // set base axios settings
-axios.defaults.baseURL = 'http://localhost:3002';
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
