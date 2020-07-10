@@ -6,7 +6,7 @@ export interface IModel {
 }
 
 export interface IActions {
-    deleteStudent: () => void;
+    deleteStudent: () => Promise<void>;
     onClickDelete: (student: StudentViewModel) => void;
     onClickEdit: (student: number | undefined) => void;
     closePrompt: () => void;

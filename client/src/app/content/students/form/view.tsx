@@ -29,7 +29,7 @@ export const View = (props: IStateProps & InjectedFormProps) => {
             </Field>
 
             <div className="d-flex justify-content-end w-100 pr-4">
-                <LoadingButton variant="contained" color="secondary" className="mr-4" type="submit" 
+                <LoadingButton variant="contained" color="secondary" className="mr-4" type="submit"
                     loading={submitting} disabled={invalid || pristine || submitting}>
                     Save
                 </LoadingButton>

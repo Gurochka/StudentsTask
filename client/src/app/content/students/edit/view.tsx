@@ -5,7 +5,7 @@ import { LoadingButton } from '../../../shared/components/loadingButton';
 import { StudentForm } from '../form';
 import { IStateProps } from './model';
 
-export const View = ({ deleting, onDelete, ...props}: IStateProps) => {
+export const View = ({ deleting, onDelete, ...props }: IStateProps) => {
     return (
         <>
             <Box display="flex" justifyContent="space-between">

@@ -1,15 +1,15 @@
 export interface IModel {
-    title?: string
-    content: string
-    show: boolean
+    title?: string;
+    content: string;
+    show: boolean;
 }
 
 export interface IPromptProps extends IModel {
-    onAgree: () => void
-    onClose: () => void
+    onAgree: () => Promise<void>;
+    onClose: () => void;
 }
 
 export interface IStateProps extends IModel, IPromptProps {
-    agreed: boolean
-    onClickAgree: () => void
+    agreed: boolean;
+    onClickAgree: () => void;
 }

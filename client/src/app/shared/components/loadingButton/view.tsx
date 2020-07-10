@@ -8,9 +8,8 @@ export const View = ({ children, loading, ...rest }: IStateProps) => {
         <Button color="primary" disabled={disabled} {...rest}>
             {children}
             {
-                loading && <CircularProgress color="primary" size="1rem" className="ml-3" /> 
+                loading && <CircularProgress color="primary" size="1rem" className="ml-3" />
             }
         </Button>
-    )
+    );
 };
-

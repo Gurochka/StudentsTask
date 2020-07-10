@@ -7,13 +7,14 @@ export const Prompt = (props: IPromptProps) => {
     const [agreed, setAgreed] = React.useState(false);
 
     const stateProps = {
-        agreed: agreed,
-        onClickAgree: () => {
+        agreed,
+        onClickAgree: async () => {
             setAgreed(true);
-            props.onAgree();
-        } 
-    }
+            await props.onAgree();
+            setAgreed(false);
+        }
+    };
     const mergedProps: IStateProps = { ...props, ...stateProps };
 
     return (<View {...mergedProps} />);
-}
+};
