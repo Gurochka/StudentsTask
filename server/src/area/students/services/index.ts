@@ -12,7 +12,6 @@ import { StudentViewModelMapper } from '../mappers/studentViewModelMapper';
 @Path('')
 export class StudentService {
 
-    // eslint-disable-next-line require-await
     @GET
     @Tags('students')
     @Path('/students')
