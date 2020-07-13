@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ActionType, BaseAction } from './root.actions';
+import { AppState } from '../reducers/root.reducers';
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { Dictionaries } from '../../../../common/model/resources/dictionaries';
@@ -10,9 +11,9 @@ const setDictionaries = (dictionaries: Dictionaries): BaseAction => ({
     payload: dictionaries
 });
 
-export const getResources = (): ThunkAction<void, {}, {}, AnyAction> => {
+export const getResources = (): ThunkAction<void, AppState, {}, AnyAction> => {
     return async (dispatch, getState) => {
-        const { resources }: any = getState();
+        const { resources } = getState();
 
         if (!resources.dictionaries.assessment) {
             const resourcesReq = await axios.get<ResourcesViewModel>(`/resources`);

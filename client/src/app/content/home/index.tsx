@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../redux/actions/root.actions';
 import { View } from './view';
 
-export const Home: React.FC = () => {
+export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     return (<View onClickAdd={() => dispatch(push('/students/add'))} />);

@@ -10,7 +10,7 @@ import { View } from './view';
 import { IStateProps, IModel } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
-export const Students: React.FC = () => {
+export const Students = () => {
     const dispatch = useDispatch<AppDispatch>();
     const stateModel = useSelector<AppState, IModel>(state => ({
         students: state.students.list,

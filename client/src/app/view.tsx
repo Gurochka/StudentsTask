@@ -7,7 +7,7 @@ import { RouterContent } from './routes';
 import { store, history } from '../redux/store';
 import { Notifier } from './shared/components/notifier';
 
-export const View: React.FC = () => {
+export const View = () => {
     return (
         <Provider store={store}>
             <ConnectedRouter history={history}>

@@ -9,10 +9,8 @@ import { ResourcesViewModel } from '../../../../../common/model/resources';
 const getDictionary = (): Promise<Dictionaries> => {
     const dictionary = new Dictionaries();
     dictionary.assessment = processDictionaryItems('Assessment', enumToDictionaryItem(Assessment));
-
     return Promise.resolve(dictionary);
 };
-
 
 @Path('')
 export class ResourcesService {

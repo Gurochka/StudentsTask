@@ -41,6 +41,7 @@ const compareTwoParams = (a: any, b: any) => {
 
 export const processDictionaryItems = (name: string, dictionary: DictionaryItem[]): DictionaryItem[] => {
     const enumDefinition = enumsDefinition[name];
+
     if (!enumDefinition) {
         return dictionary;
     }

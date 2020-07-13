@@ -1,15 +1,16 @@
 import { StudentCreator } from '../../../../common/model/student/studentCreator';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 import { DictionaryItem } from '../../../../common/model/resources/dictionaries/dictionaryItem';
+import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
 
 export interface IStateProps {
     assessment: DictionaryItem[];
-    initialValues?: StudentViewModel | null | undefined;
-    onSubmit: (student: any) => void;
+    initialValues?: ActiveStudentState | undefined;
+    onSubmit: (student: StudentViewModel) => void;
     onGoBack: () => void;
 }
 
 export interface IFormProps{
-    student?: StudentViewModel | null;
+    student?: ActiveStudentState;
     onSave: (student: StudentViewModel | StudentCreator) => void;
 }
