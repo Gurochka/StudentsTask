@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { ActionType, BaseAction } from './root.actions';
-import { AppState } from '../reducers/root.reducers';
-import { ThunkAction } from 'redux-thunk';
-import { AnyAction } from 'redux';
+
+import { ActionType, BaseAction, BaseThunkAction } from './root.actions';
 import { Dictionaries } from '../../../../common/model/resources/dictionaries';
 import { ResourcesViewModel } from '../../../../common/model/resources';
 
@@ -11,7 +9,7 @@ const setDictionaries = (dictionaries: Dictionaries): BaseAction => ({
     payload: dictionaries
 });
 
-export const getResources = (): ThunkAction<void, AppState, {}, AnyAction> => {
+export const getResources = (): BaseThunkAction => {
     return async (dispatch, getState) => {
         const { resources } = getState();
 

@@ -1,3 +1,6 @@
+import { ThunkAction } from 'redux-thunk';
+import { AppState } from '../reducers/root.reducers';
+
 export type AppDispatch = (...args: any[]) => Promise<void> | void;
 
 export enum ActionType {
@@ -15,6 +18,8 @@ export class BaseAction<T = any> {
     type: ActionType;
     payload?: T;
 }
+
+export type BaseThunkAction = ThunkAction<void, AppState, {}, BaseAction>
 
 export interface Notify {
     type: "error" | "warning" | "info" | "success" | "primary" | "secondary";
