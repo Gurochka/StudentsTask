@@ -6,11 +6,12 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import { IStateProps } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
+import { Assessment } from '../../../../common/model/resources/assessment';
 
 import { Prompt } from '../../../shared/components/prompt';
 
 export const View = (props: IStateProps) => {
-    const { studentToRemove } = props;
+    const { studentToRemove, assessment } = props;
 
     return (
         <>
@@ -47,7 +48,9 @@ export const View = (props: IStateProps) => {
                                                 {student.firstName} {student.lastName}
                                             </TableCell>
                                             <TableCell align="center">{student.birthDate}</TableCell>
-                                            <TableCell align="center">{student.assessment}</TableCell>
+                                            <TableCell align="center">
+                                                { assessment && student.assessment && Assessment[student.assessment]}
+                                            </TableCell>
                                             <TableCell align="right">
                                                 <IconButton title="Edit student" onClick={() => props.onClickEdit(student.id)}>
                                                     <EditOutlinedIcon color="primary" />

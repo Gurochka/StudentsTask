@@ -1,6 +1,8 @@
-import { GenerateView, IgnoreViewModel } from 'grunt-generate-view-model';
+import { GenerateView, IgnoreViewModel, ViewModelType } from 'grunt-generate-view-model';
 import { GenerateHistory } from 'grunt-generate-history-model';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Assessment } from '../../../../../common/model/resources/assessment';
 
 @Entity(/*'student'*/)
 @GenerateHistory({
@@ -33,7 +35,8 @@ export class Student {
     @Column({ type: 'text', name: 'birth_date', 'nullable': true })
     public birthDate?: string;
 
-    @Column({ type: 'text', 'nullable': true })
-    public assessment?: string;
+    @ViewModelType({ 'type': 'Assessment' })
+    @Column({ type: 'integer', 'nullable': true })
+    public assessment?: number;
 
 }

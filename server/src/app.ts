@@ -16,6 +16,7 @@ import * as swaggerUi from 'swagger-ui-express';
 import { logger } from '../common/logger';
 import { studentDBWrapper } from './shared/dbWrappers/students_task/student/studentDBWrapper';
 import { StudentCtrl } from './area/students/controllers';
+import { ResourcesCtrl } from './area/resources/controllers';
 
 const app = express();
 app.use(cors());
@@ -36,6 +37,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms', 
     await studentDBWrapper.initialize(false, false);
 })().then(() => {
     const studentCtrl = new StudentCtrl();
+    const resourcesCtrl = new ResourcesCtrl();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -47,6 +49,9 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms', 
         .get(studentCtrl.getActiveStudent)
         .put(studentCtrl.update)
         .delete(studentCtrl.remove);
+
+    app.route('/resources')
+        .get(resourcesCtrl.getResources);
 
     if (swaggerDocument) {
         const swaggerOptions = {

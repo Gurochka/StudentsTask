@@ -1,11 +1,14 @@
-import { createElement } from 'react';
+import { createElement, useEffect } from 'react';
 import { reduxForm } from 'redux-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { AppDispatch } from '../../../../redux/actions/root.actions';
+import { AppState } from '../../../../redux/reducers/root.reducers';
 import { IStateProps, IFormProps } from './model';
 import { View } from './view';
+import { getResources } from '../../../../redux/actions/resources.actions';
+import { DictionaryItem } from '../../../../common/model/resources/dictionaries/dictionaryItem';
 
 const Form = reduxForm<any, any>({
     form: 'studentForm',
@@ -14,8 +17,14 @@ const Form = reduxForm<any, any>({
 
 export const StudentForm = (props: IFormProps) => {
     const dispatch = useDispatch<AppDispatch>();
+    const assessment = useSelector<AppState, DictionaryItem[]>(state => state.resources.dictionaries.assessment);
+
+    useEffect(() => {
+        dispatch(getResources());
+    }, []);
 
     const formProps: IStateProps = {
+        assessment,
         initialValues: props.student,
         onSubmit: props.onSave,
         onGoBack: () => dispatch(push('/students'))

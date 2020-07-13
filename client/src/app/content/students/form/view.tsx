@@ -5,13 +5,12 @@ import { Button, MenuItem } from '@material-ui/core';
 import { IStateProps } from './model';
 import { FormTextField } from '../../../shared/components/formTextField';
 import { FormSelectField } from '../../../shared/components/formSelectField';
-import { assessments } from '../../../../common/constants';
 import { required } from '../../../shared/validation';
 import { LoadingButton } from '../../../shared/components/loadingButton';
 
 export const View = (props: IStateProps & InjectedFormProps) => {
     const field_classes = 'col-sm-6 pr-4 pb-4';
-    const { handleSubmit, pristine, submitting, invalid } = props;
+    const { handleSubmit, assessment, pristine, submitting, invalid } = props;
 
     return (
         <form className="p-4 row justify-content-between" onSubmit={handleSubmit(props.onSubmit)} >
@@ -22,8 +21,8 @@ export const View = (props: IStateProps & InjectedFormProps) => {
 
             <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>
                 {
-                    assessments.map(assessment => (
-                        <MenuItem value={assessment} key={assessment}>{assessment}</MenuItem>
+                    assessment && assessment.map(item => (
+                        <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
                     ))
                 }
             </Field>

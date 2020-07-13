@@ -2,6 +2,7 @@
 // tslint:disable
 /* eslint-disable */
 
+import { Assessment } from '../resources/assessment';
 
 export interface StudentViewModel {
 
@@ -15,6 +16,6 @@ export interface StudentViewModel {
 
   birthDate?: string;
 
-  assessment?: string;
+  assessment?: Assessment;
 
 }

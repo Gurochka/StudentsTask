@@ -26,6 +26,6 @@ export class hStudent {
     public middle_name: string;
     @Column('text', {'nullable': true})
     public birth_date: string;
-    @Column('text', {'nullable': true})
-    public assessment: string;
+    @Column('integer', {'nullable': true})
+    public assessment: number;
 }

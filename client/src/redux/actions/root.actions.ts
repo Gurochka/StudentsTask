@@ -7,7 +7,8 @@ export enum ActionType {
     REMOVE_STUDENT = '[Student] Delete',
     UPDATE_STUDENT = '[Student] Update',
 
-    NOTIFY = '[Notify] Show'
+    NOTIFY = '[Notify] Show',
+    SET_DICTIONARIES = '[Resources] Set dictionaries'
 }
 
 export class BaseAction<T = any> {

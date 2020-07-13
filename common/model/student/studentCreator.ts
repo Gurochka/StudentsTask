@@ -2,6 +2,7 @@
 // tslint:disable
 /* eslint-disable */
 
+import { Assessment } from '../resources/assessment';
 
 export interface StudentCreator {
 
@@ -13,6 +14,6 @@ export interface StudentCreator {
 
   birthDate?: string;
 
-  assessment?: string;
+  assessment?: Assessment;
 
 }

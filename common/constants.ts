@@ -1,1 +1,0 @@
-export const assessments:Array<string> = ['отл', 'хор', 'уд', 'неуд'];

@@ -58,7 +58,7 @@ const createStudent = async () => {
     const gender = faker.random.number({ min: 0, max: 1 });
     student.firstName = faker.name.firstName(gender);
     student.lastName = faker.name.lastName(gender);
-    student.assessment = Assessment[1];
+    student.assessment = Assessment.хор;
 
     await studentDBWrapper.getEntityManager().save(student);
 };

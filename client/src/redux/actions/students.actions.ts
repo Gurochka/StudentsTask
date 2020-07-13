@@ -1,15 +1,14 @@
 import axios from 'axios';
-import { ActionType } from './root.actions';
+import { ActionType, BaseAction } from './root.actions';
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { StudentViewModel } from '../../common/model/student/studentViewModel';
 import { ActiveStudentState, ListStudentsState } from '../reducers/students.reducers';
 
-export const setActiveStudent = (student: ActiveStudentState): ThunkAction<void, {}, {}, AnyAction> => {
-    return (dispatch) => {
-        dispatch({ type: ActionType.SET_STUDENT, payload: student });
-    };
-};
+export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
+    type: ActionType.SET_STUDENT,
+    payload: student
+});
 
 export const getActiveStudent = (studentId: number | string): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch) => {
@@ -18,11 +17,10 @@ export const getActiveStudent = (studentId: number | string): ThunkAction<void, 
     };
 };
 
-export const setStudents = (students: ListStudentsState): ThunkAction<void, {}, {}, AnyAction> => {
-    return (dispatch) => {
-        dispatch({ type: ActionType.SET_STUDENTS, payload: students });
-    };
-};
+export const setStudents = (students: ListStudentsState): BaseAction => ({
+    type: ActionType.SET_STUDENTS,
+    payload: students
+});
 
 export const getStudents = (): ThunkAction<void, {}, {}, AnyAction> => {
     return async (dispatch, getState) => {
