@@ -10,14 +10,3 @@ export const dictionaryToObject = (dictionary: DictionaryItem[]): any => {
 
     return res;
 };
-
-// export const dictionaryPipe = (dictionary: DictionaryItem[] | any, id: number, nameAlways?: boolean): string => {
-//     if (!dictionary) {
-//         return null;
-//     }
-//     const finded = dictionary.find((item: DictionaryItem) => item.id === id);
-//     if (!finded) {
-//         return null;
-//     }
-//     return (nameAlways) ? finded.name : (finded.translation || finded.name);
-// };

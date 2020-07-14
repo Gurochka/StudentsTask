@@ -11,7 +11,7 @@ export interface IActions {
     studentToRemove?: StudentViewModel;
     deleteStudent: () => Promise<void>;
     onClickDelete: (student: StudentViewModel) => void;
-    onClickEdit: (student: number | undefined) => void;
+    onClickEdit: (student?: number) => void;
     closePrompt: () => void;
 }
 

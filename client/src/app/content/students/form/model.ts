@@ -5,7 +5,7 @@ import { ActiveStudentState } from '../../../../redux/reducers/students';
 
 export interface IStateProps {
     assessment: DictionaryItem[];
-    initialValues?: ActiveStudentState | undefined;
+    initialValues?: ActiveStudentState;
     onSubmit: (student: StudentViewModel) => void;
     onGoBack: () => void;
 }
