@@ -21,8 +21,8 @@ export const View = (props: IStateProps & InjectedFormProps) => {
 
             <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>
                 {
-                    assessment && assessment.map(item => (
-                        <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
+                    assessment?.map(item => (
+                        <MenuItem value={item.id} key={item.id}>{item.translation}</MenuItem>
                     ))
                 }
             </Field>

@@ -9,7 +9,7 @@ import { Student } from '../src/area/students/models/student';
 import { AppState } from '../common/appState';
 import { logger } from '../common/logger';
 
-import { Assessment } from '../../common/model/enums/assessment';
+import { Assessment } from '../../common/model/resources/assessment';
 
 const createDB = async (): Promise<void> => {
     const pgp = pgPromise({});
@@ -58,7 +58,7 @@ const createStudent = async () => {
     const gender = faker.random.number({ min: 0, max: 1 });
     student.firstName = faker.name.firstName(gender);
     student.lastName = faker.name.lastName(gender);
-    student.assessment = Assessment.хор;
+    student.assessment = Assessment.good;
 
     await studentDBWrapper.getEntityManager().save(student);
 };

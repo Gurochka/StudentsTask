@@ -9,6 +9,7 @@ import { getResources } from '../../../../redux/actions/resources.actions';
 import { View } from './view';
 import { IStateProps, IModel } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
+import { dictionaryToObject } from '../../../shared/pipes/dictionary';
 
 export const Students = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -17,15 +18,18 @@ export const Students = () => {
         assessment: state.resources.dictionaries.assessment
     }));
 
+    const assessment = dictionaryToObject(stateModel.assessment);
+
     const [studentToRemove, setStudentToRemove] = React.useState<StudentViewModel | undefined>();
 
     React.useEffect(() => {
         dispatch(getStudents());
         dispatch(getResources());
-    }, []);
+    }, [dispatch]);
 
     const props: IStateProps = {
         ...stateModel,
+        assessment,
         studentToRemove,
         onClickDelete: (student) => {
             setStudentToRemove(student);
@@ -44,5 +48,5 @@ export const Students = () => {
             dispatch(push(`/students/${student_id}`));
         }
     };
-    return React.useMemo(() => View(props), [props]);
+    return View(props);
 };
