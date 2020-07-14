@@ -16,5 +16,5 @@ export const Prompt = (props: IPromptProps) => {
     };
     const mergedProps: IStateProps = { ...props, ...stateProps };
 
-    return (<View {...mergedProps} />);
+    return View(mergedProps);
 };

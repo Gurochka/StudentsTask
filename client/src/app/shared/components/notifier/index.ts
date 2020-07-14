@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../../redux/actions';
@@ -32,5 +32,5 @@ export const Notifier = () => {
         }
     };
 
-    return (<View {...props} />);
+    return View(props);
 };

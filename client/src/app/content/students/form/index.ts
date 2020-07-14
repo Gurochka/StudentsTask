@@ -21,7 +21,7 @@ export const StudentForm = (props: IFormProps) => {
 
     useEffect(() => {
         dispatch(getResources());
-    }, []);
+    }, [dispatch]);
 
     const formProps: IStateProps = {
         assessment,

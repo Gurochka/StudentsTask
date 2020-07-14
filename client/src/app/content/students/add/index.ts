@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
 
@@ -17,5 +16,5 @@ export const AddStudent = () => {
         }
     };
 
-    return React.useMemo(() => View(props), [props]);
+    return View(props);
 };

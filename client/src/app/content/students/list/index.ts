@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
@@ -20,9 +20,9 @@ export const Students = () => {
 
     const assessment = dictionaryToObject(stateModel.assessment);
 
-    const [studentToRemove, setStudentToRemove] = React.useState<StudentViewModel | undefined>();
+    const [studentToRemove, setStudentToRemove] = useState<StudentViewModel | undefined>();
 
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(getStudents());
         dispatch(getResources());
     }, [dispatch]);
