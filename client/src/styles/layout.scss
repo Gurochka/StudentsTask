@@ -7,3 +7,7 @@ body {
     background-color: $gray-100;
     color: $gray-800;
 }
+
+button:focus {
+    outline: none;
+}
