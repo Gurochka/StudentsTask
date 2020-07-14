@@ -8,8 +8,10 @@ import { IProps } from './model';
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
 
+    const onClickAdd = () => dispatch(push('/students/add'));
+
     const props: IProps = {
-        onClickAdd: () => dispatch(push('/students/add'))
+        onClickAdd
     };
 
     return View(props);

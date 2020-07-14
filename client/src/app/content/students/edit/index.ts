@@ -9,6 +9,7 @@ import { getActiveStudent, setActiveStudent, updateStudent, removeStudent } from
 import { AppDispatch } from '../../../../redux/actions';
 import { AppState } from '../../../../redux/reducers';
 import { ActiveStudentState } from '../../../../redux/reducers/students';
+import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
 export const EditStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +17,19 @@ export const EditStudent = () => {
     const [deleting, setDeleting] = useState(false);
 
     const { studentId } = useParams();
+
+    const onEdit = async (data: StudentViewModel) => {
+        await dispatch(updateStudent(data));
+        dispatch(push(`/students`));
+    };
+
+    const onDelete = async () => {
+        if (student) {
+            setDeleting(true);
+            await dispatch(removeStudent(student));
+            dispatch(push(`/students`));
+        }
+    };
 
     useEffect(() => {
         dispatch(getActiveStudent(studentId));
@@ -27,17 +41,8 @@ export const EditStudent = () => {
     const props: IStateProps = {
         student,
         deleting,
-        onEdit: async (data) => {
-            await dispatch(updateStudent(data));
-            dispatch(push(`/students`));
-        },
-        onDelete: async () => {
-            if (student) {
-                setDeleting(true);
-                await dispatch(removeStudent(student));
-                dispatch(push(`/students`));
-            }
-        }
+        onEdit,
+        onDelete
     };
 
     return View(props);

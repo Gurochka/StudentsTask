@@ -23,13 +23,15 @@ export const Notifier = () => {
         return null;
     }
 
+    const onClose = () => {
+        setOpen(false);
+        dispatch(notify(null));
+    };
+
     const props: IStateProps = {
         open,
         notifyOptions,
-        onClose: () => {
-            setOpen(false);
-            dispatch(notify(null));
-        }
+        onClose
     };
 
     return View(props);

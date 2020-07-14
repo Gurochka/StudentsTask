@@ -5,15 +5,18 @@ import { View } from './view';
 import { IStateProps } from './model';
 import { AppDispatch } from '../../../../redux/actions';
 import { addStudent } from '../../../../redux/actions/students';
+import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 
 export const AddStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
 
+    const onAdd = async (data: StudentViewModel) => {
+        await dispatch(addStudent(data));
+        dispatch(push('/students'));
+    };
+
     const props: IStateProps = {
-        onAdd: async (data) => {
-            await dispatch(addStudent(data));
-            dispatch(push('/students'));
-        }
+        onAdd
     };
 
     return View(props);
