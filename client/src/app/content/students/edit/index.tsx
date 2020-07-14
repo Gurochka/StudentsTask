@@ -5,10 +5,10 @@ import { push } from 'connected-react-router';
 
 import { View } from './view';
 import { IStateProps } from './model';
-import { getActiveStudent, setActiveStudent, updateStudent, removeStudent } from '../../../../redux/actions/students.actions';
-import { AppDispatch } from '../../../../redux/actions/root.actions';
-import { AppState } from '../../../../redux/reducers/root.reducers';
-import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
+import { getActiveStudent, setActiveStudent, updateStudent, removeStudent } from '../../../../redux/actions/students';
+import { AppDispatch } from '../../../../redux/actions';
+import { AppState } from '../../../../redux/reducers';
+import { ActiveStudentState } from '../../../../redux/reducers/students';
 
 export const EditStudent = () => {
     const dispatch = useDispatch<AppDispatch>();

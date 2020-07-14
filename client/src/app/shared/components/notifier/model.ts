@@ -1,4 +1,4 @@
-import { NotifyState } from '../../../../redux/reducers/notify.reducers';
+import { NotifyState } from '../../../../redux/reducers/notify';
 
 export interface IStateProps {
    open: boolean;

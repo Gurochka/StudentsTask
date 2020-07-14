@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { ActionType, BaseAction } from '../actions/root.actions';
-import { Dictionaries } from '../../../../common/model/resources/dictionaries';
+import { ActionType, BaseAction } from '../../actions';
+import { Dictionaries } from '../../../../../common/model/resources/dictionaries';
 
 export type DictionaryState = Dictionaries;
 

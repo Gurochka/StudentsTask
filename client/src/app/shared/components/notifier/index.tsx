@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { AppDispatch } from '../../../../redux/actions/root.actions';
-import { AppState } from '../../../../redux/reducers/root.reducers';
-import { notify } from '../../../../redux/actions/notify.actions';
-import { NotifyState } from '../../../../redux/reducers/notify.reducers';
+import { AppDispatch } from '../../../../redux/actions';
+import { AppState } from '../../../../redux/reducers';
+import { notify } from '../../../../redux/actions/notify';
+import { NotifyState } from '../../../../redux/reducers/notify';
 import { View } from './view';
 import { IStateProps } from './model';
 

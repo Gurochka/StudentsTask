@@ -2,7 +2,7 @@ import React from 'react';
 import { push } from 'connected-react-router';
 import { useDispatch } from 'react-redux';
 
-import { AppDispatch } from '../../../redux/actions/root.actions';
+import { AppDispatch } from '../../../redux/actions';
 import { View } from './view';
 
 export const Home = () => {

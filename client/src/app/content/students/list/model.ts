@@ -1,6 +1,6 @@
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 import { DictionaryItem } from '../../../../common/model/resources/dictionaries/dictionaryItem';
-import { ListStudentsState } from '../../../../redux/reducers/students.reducers';
+import { ListStudentsState } from '../../../../redux/reducers/students';
 
 export interface IModel {
     students: ListStudentsState;

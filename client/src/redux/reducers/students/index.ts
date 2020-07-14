@@ -1,6 +1,6 @@
-import { ActionType, BaseAction } from '../actions/root.actions';
+import { ActionType, BaseAction } from '../../actions';
 import { combineReducers } from 'redux';
-import { StudentViewModel } from '../../common/model/student/studentViewModel';
+import { StudentViewModel } from '../../../common/model/student/studentViewModel';
 
 export type ActiveStudentState = StudentViewModel | null;
 export type ListStudentsState = StudentViewModel[] | null;

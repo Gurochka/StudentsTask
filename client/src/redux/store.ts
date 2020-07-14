@@ -4,7 +4,7 @@ import axios from 'axios';
 import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
-import { rootReducer, AppState } from './reducers/root.reducers';
+import { rootReducer, AppState } from './reducers';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore

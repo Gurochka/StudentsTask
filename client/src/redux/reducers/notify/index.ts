@@ -1,4 +1,4 @@
-import { ActionType, BaseAction, Notify } from '../actions/root.actions';
+import { ActionType, BaseAction, Notify } from '../../actions';
 
 export type NotifyState = Notify | null;
 

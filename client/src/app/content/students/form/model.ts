@@ -1,7 +1,7 @@
 import { StudentCreator } from '../../../../common/model/student/studentCreator';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
 import { DictionaryItem } from '../../../../common/model/resources/dictionaries/dictionaryItem';
-import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
+import { ActiveStudentState } from '../../../../redux/reducers/students';
 
 export interface IStateProps {
     assessment: DictionaryItem[];

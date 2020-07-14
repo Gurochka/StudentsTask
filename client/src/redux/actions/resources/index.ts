@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { ActionType, BaseAction, BaseThunkAction } from './root.actions';
-import { Dictionaries } from '../../../../common/model/resources/dictionaries';
-import { ResourcesViewModel } from '../../../../common/model/resources';
+import { ActionType, BaseAction, BaseThunkAction } from '..';
+import { Dictionaries } from '../../../../../common/model/resources/dictionaries';
+import { ResourcesViewModel } from '../../../../../common/model/resources';
 
 const setDictionaries = (dictionaries: Dictionaries): BaseAction => ({
     type: ActionType.SET_DICTIONARIES,

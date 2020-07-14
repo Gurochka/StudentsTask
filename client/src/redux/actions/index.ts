@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { AppState } from '../reducers/root.reducers';
+import { AppState } from '../reducers';
 
 export type AppDispatch = (...args: any[]) => Promise<void> | void;
 

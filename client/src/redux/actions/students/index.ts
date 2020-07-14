@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { ActionType, BaseAction, BaseThunkAction } from './root.actions';
-import { StudentViewModel } from '../../common/model/student/studentViewModel';
-import { ActiveStudentState, ListStudentsState } from '../reducers/students.reducers';
+import { ActionType, BaseAction, BaseThunkAction } from '..';
+import { StudentViewModel } from '../../../common/model/student/studentViewModel';
+import { ActiveStudentState, ListStudentsState } from '../../reducers/students';
 
 export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
     type: ActionType.SET_STUDENT,

@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
-import { AppDispatch } from '../../../../redux/actions/root.actions';
-import { AppState } from '../../../../redux/reducers/root.reducers';
-import { getStudents, removeStudent } from '../../../../redux/actions/students.actions';
-import { getResources } from '../../../../redux/actions/resources.actions';
+import { AppDispatch } from '../../../../redux/actions';
+import { AppState } from '../../../../redux/reducers';
+import { getStudents, removeStudent } from '../../../../redux/actions/students';
+import { getResources } from '../../../../redux/actions/resources';
 import { View } from './view';
 import { IStateProps, IModel } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';

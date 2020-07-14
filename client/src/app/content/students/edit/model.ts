@@ -1,5 +1,5 @@
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
-import { ActiveStudentState } from '../../../../redux/reducers/students.reducers';
+import { ActiveStudentState } from '../../../../redux/reducers/students';
 
 export interface IModel {
    student: ActiveStudentState;

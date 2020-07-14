@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { ActionType, Notify, BaseAction } from './root.actions';
-import { NotifyState } from '../reducers/notify.reducers';
-import { store } from '../store';
+import { ActionType, Notify, BaseAction } from '..';
+import { NotifyState } from '../../reducers/notify';
+import { store } from '../../store';
 
 export const notify = (message: NotifyState): BaseAction => ({
     type: ActionType.NOTIFY,

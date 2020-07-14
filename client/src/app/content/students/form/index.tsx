@@ -3,11 +3,11 @@ import { reduxForm } from 'redux-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
-import { AppDispatch } from '../../../../redux/actions/root.actions';
-import { AppState } from '../../../../redux/reducers/root.reducers';
+import { AppDispatch } from '../../../../redux/actions';
+import { AppState } from '../../../../redux/reducers';
 import { IStateProps, IFormProps } from './model';
 import { View } from './view';
-import { getResources } from '../../../../redux/actions/resources.actions';
+import { getResources } from '../../../../redux/actions/resources';
 import { DictionaryItem } from '../../../../common/model/resources/dictionaries/dictionaryItem';
 
 const Form = reduxForm<any, any>({

@@ -4,8 +4,8 @@ import { push } from 'connected-react-router';
 
 import { View } from './view';
 import { IStateProps } from './model';
-import { AppDispatch } from '../../../../redux/actions/root.actions';
-import { addStudent } from '../../../../redux/actions/students.actions';
+import { AppDispatch } from '../../../../redux/actions';
+import { addStudent } from '../../../../redux/actions/students';
 
 export const AddStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
