@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
@@ -10,6 +10,7 @@ import { AppDispatch } from '../../../../redux/actions';
 import { AppState } from '../../../../redux/reducers';
 import { ActiveStudentState } from '../../../../redux/reducers/students';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
+import { showMessage } from '../../../../redux/actions/httpWrapperActions';
 
 export const EditStudent = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -31,12 +32,24 @@ export const EditStudent = () => {
         }
     };
 
+    const getStudent = useCallback(async () => {
+        try {
+            await dispatch(getActiveStudent(studentId));
+        } catch (err) {
+            dispatch(push(`/students`));
+            dispatch(showMessage({
+                type: 'error',
+                message: 'Такого студента не найдено!'
+            }));
+        }
+    }, [studentId, dispatch]);
+
     useEffect(() => {
-        dispatch(getActiveStudent(studentId));
+        getStudent();
         return () => {
             dispatch(setActiveStudent(null));
         };
-    }, [dispatch, studentId]);
+    }, [dispatch, getStudent]);
 
     const props: IStateProps = {
         student,
