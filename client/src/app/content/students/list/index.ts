@@ -5,7 +5,6 @@ import { push } from 'connected-react-router';
 import { AppDispatch } from '../../../../redux/actions';
 import { AppState } from '../../../../redux/reducers';
 import { getStudents, removeStudent } from '../../../../redux/actions/students';
-import { getResources } from '../../../../redux/actions/resources';
 import { View } from './view';
 import { IStateProps, IModel } from './model';
 import { StudentViewModel } from '../../../../common/model/student/studentViewModel';
@@ -24,7 +23,6 @@ export const Students = () => {
 
     useEffect(() => {
         dispatch(getStudents());
-        dispatch(getResources());
     }, [dispatch]);
 
     const props: IStateProps = {

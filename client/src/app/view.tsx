@@ -9,7 +9,7 @@ import luxon from 'luxon';
 import { ResourceProvider } from './shared/components/resourceProvider';
 import { RouterContent } from './routes';
 import { store, history } from '../redux/store';
-import { Notifier } from './shared/components/notifier';
+import { HttpWrapper } from './shared/httpWrapper';
 
 export const View = () => {
     return (
@@ -22,7 +22,7 @@ export const View = () => {
                                 { RouterContent }
                             </Paper>
                         </Box>
-                        <Notifier />
+                        <HttpWrapper />
                     </MuiPickersUtilsProvider>
                 </ResourceProvider>
             </ConnectedRouter>

@@ -10,8 +10,8 @@ export enum ActionType {
     REMOVE_STUDENT = '[Student] Delete',
     UPDATE_STUDENT = '[Student] Update',
 
-    NOTIFY = '[Notify] Show',
-    SET_DICTIONARIES = '[Resources] Set dictionaries'
+    SHOW_MESSAGE = '[Http wrapper] Show message',
+    SET_DICTIONARIES = '[Resources] Set dictionaries',
 }
 
 export class BaseAction<T = any> {
@@ -21,7 +21,7 @@ export class BaseAction<T = any> {
 
 export type BaseThunkAction = ThunkAction<void, AppState, {}, BaseAction>
 
-export interface Notify {
+export interface Message {
     type: "error" | "warning" | "info" | "success" | "primary" | "secondary";
     message: string;
 }

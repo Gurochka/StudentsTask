@@ -1,8 +1,7 @@
-import axios from 'axios';
-
 import { ActionType, BaseAction, BaseThunkAction } from '..';
 import { StudentViewModel } from '../../../common/model/student/studentViewModel';
 import { ActiveStudentState, ListStudentsState } from '../../reducers/students';
+import { httpService } from '../../../app/shared/httpWrapper';
 
 export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
     type: ActionType.SET_STUDENT,
@@ -11,8 +10,8 @@ export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
 
 export const getActiveStudent = (studentId: number | string): BaseThunkAction => {
     return async (dispatch) => {
-        const studentsReq = await axios.get<StudentViewModel>(`/students/${studentId}`);
-        dispatch(setActiveStudent(studentsReq.data));
+        const studentsReq = await httpService.get<StudentViewModel>(`/students/${studentId}`);
+        dispatch(setActiveStudent(studentsReq));
     };
 };
 
@@ -25,39 +24,39 @@ export const getStudents = (): BaseThunkAction => {
     return async (dispatch, getState) => {
         const { students: { list } } = getState();
         if (!list || list.length > 10) {
-            const studentsReq = await axios.get<StudentViewModel[]>('/students');
-            dispatch(setStudents(studentsReq.data));
+            const studentsReq = await httpService.get<StudentViewModel[]>('/students');
+            dispatch(setStudents(studentsReq));
         }
     };
 };
 
 export const addStudent = (studentData: StudentViewModel): BaseThunkAction => {
     return async (dispatch, getState) => {
-        const studentReq = await axios.post<StudentViewModel>(`/students`, studentData);
+        const studentReq = await httpService.post<StudentViewModel>(`/students`, studentData);
         const { students: { list } } = getState();
         if (list) {
-            dispatch(setStudents([...list, studentReq.data]));
+            dispatch(setStudents([...list, studentReq]));
         }
     };
 };
 
 export const updateStudent = (student: StudentViewModel): BaseThunkAction => {
     return async (dispatch, getState) => {
-        const updatedStudentReq = await axios.put<StudentViewModel>(`/students/${student.id}`, student);
+        const updatedStudentReq = await httpService.put<StudentViewModel>(`/students/${student.id}`, student);
         const { students: { active, list } } = getState();
 
         if (active && active.id === student.id) {
-            dispatch(setActiveStudent(updatedStudentReq.data));
+            dispatch(setActiveStudent(updatedStudentReq));
         }
         if (list) {
-            dispatch(setStudents(list.map((s: StudentViewModel) => s.id === student.id ? updatedStudentReq.data : s)));
+            dispatch(setStudents(list.map((s: StudentViewModel) => s.id === student.id ? updatedStudentReq : s)));
         }
     };
 };
 
 export const removeStudent = (student: StudentViewModel): BaseThunkAction => {
     return async (dispatch, getState) => {
-        await axios.delete<string>(`/students/${student.id}`);
+        await httpService.delete<string>(`/students/${student.id}`);
         const { students: { list } } = getState();
 
         if (list) {
