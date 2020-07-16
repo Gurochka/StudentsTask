@@ -18,7 +18,7 @@ const maxDate = DateTime.local().minus({ years: 14 }).toFormat('yyyy-MM-dd');
 const getFormErrors = (formData: StudentViewModel) => validationPipe(formData, [
     {
         names: 'firstName,lastName',
-        error: 'First Name is required',
+        error: 'Field is required',
         type: 'required',
     }, {
         names: 'firstName,lastName',
@@ -49,20 +49,17 @@ export const StudentForm = (props: IFormProps) => {
 
     const onGoBack = () => dispatch(push('/students'));
 
-    const onFormSubmit = (student: StudentViewModel) => {
-        const errors = getFormErrors(student);
-
-        if (errors) {
-            throw new SubmissionError(errors);
-        } else {
-            props.onSave(student);
-        }
-    };
-
     const formProps: IStateProps = {
         assessment,
         initialValues: props.student,
-        onSubmit: onFormSubmit,
+        onSubmit: async (student: StudentViewModel) => {
+            const errors = getFormErrors(student);
+            if (errors) {
+                throw new SubmissionError(errors);
+            } else {
+                await props.onSave(student);
+            }
+        },
         onGoBack
     };
 

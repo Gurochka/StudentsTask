@@ -13,7 +13,7 @@ export const View = (props: IStateProps & InjectedFormProps) => {
 
     const maxDate = DateTime.local().minus({ years: 14 }).toFormat('yyyy-MM-dd');
     return (
-        <form className="p-4 row justify-content-between" onSubmit={handleSubmit(props.onSubmit)} >
+        <form className="p-4 row justify-content-between" onSubmit={handleSubmit} >
             <Field name="firstName" label="First Name" className={ field_classes } component={BaseField} field="text" />
 
             <Field name="lastName" label="Last Name" className={ field_classes } component={BaseField} field="text" />

@@ -12,5 +12,5 @@ export interface IStateProps {
 
 export interface IFormProps{
     student?: ActiveStudentState;
-    onSave: (student: StudentViewModel | StudentCreator) => void;
+    onSave: (student: StudentViewModel | StudentCreator) => Promise<void>;
 }

@@ -7,6 +7,6 @@ export interface IModel {
 }
 
 export interface IStateProps extends IModel {
-   onEdit: (student: StudentViewModel) => void;
+   onEdit: (student: StudentViewModel) => Promise<void>;
    onDelete: () => void;
 }
