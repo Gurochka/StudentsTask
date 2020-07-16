@@ -4,10 +4,8 @@ import { Button, MenuItem } from '@material-ui/core';
 import { DateTime } from 'luxon';
 
 import { IStateProps } from './model';
-import { FormTextField } from '../../../shared/components/formTextField';
-import { FormSelectField } from '../../../shared/components/formSelectField';
 import { LoadingButton } from '../../../shared/components/loadingButton';
-import { FormDateTimeField } from '../../../shared/components/formDateTimeField';
+import { BaseField } from '../../../shared/components/baseField';
 
 export const View = (props: IStateProps & InjectedFormProps) => {
     const field_classes = 'col-sm-6 pr-4 pb-4';
@@ -16,13 +14,13 @@ export const View = (props: IStateProps & InjectedFormProps) => {
     const maxDate = DateTime.local().minus({ years: 14 }).toFormat('yyyy-MM-dd');
     return (
         <form className="p-4 row justify-content-between" onSubmit={handleSubmit(props.onSubmit)} >
-            <Field name="firstName" label="First Name" className={ field_classes } component={FormTextField} />
+            <Field name="firstName" label="First Name" className={ field_classes } component={BaseField} field="text" />
 
-            <Field name="lastName" label="Last Name" className={ field_classes } component={FormTextField} />
+            <Field name="lastName" label="Last Name" className={ field_classes } component={BaseField} field="text" />
 
-            <Field name="birthDate" label="Birthday" className={ field_classes } component={FormDateTimeField} maxDate={maxDate} />
+            <Field name="birthDate" label="Birthday" className={ field_classes } component={BaseField} field="date" maxDate={maxDate} />
 
-            <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={FormSelectField}>
+            <Field name="assessment" label="Assessment" className={ field_classes } id="student-assessment" component={BaseField} field="select">
                 {
                     assessment?.map(item => (
                         <MenuItem value={item.id} key={item.id}>{item.translation}</MenuItem>
