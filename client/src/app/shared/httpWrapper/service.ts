@@ -2,10 +2,10 @@ import axios, { AxiosRequestConfig } from 'axios';
 // import { stringify } from 'query-string';
 
 import { HttpWrapperOptions } from './options';
-// import {
-//     increaseBlockingCallCounter,
-//     decreaseBlockingCallCounter
-// } from '../../../redux/actions/httpWrapperActions';
+import {
+    increaseBlockingCallCounter,
+    decreaseBlockingCallCounter
+} from '../../../redux/actions/httpWrapperActions';
 
 import { showMessage } from '../../../redux/actions/httpWrapperActions';
 import { store } from '../../../redux/store';
@@ -64,11 +64,11 @@ export class HttpService {
 
         const result = new Promise<T>((resolve, reject) => {
             (async () => {
-                // if (httpWrapperOptions.wait) {
-                //     setTimeout(() => {
-                //         store.dispatch(increaseBlockingCallCounter());
-                //     }, httpWrapperOptions.waitTimeout);
-                // }
+                if (httpWrapperOptions.wait) {
+                    setTimeout(() => {
+                        store.dispatch(increaseBlockingCallCounter());
+                    }, httpWrapperOptions.waitTimeout);
+                }
 
                 // const state = store.getState() as AppState;
                 const headers: any = {};
@@ -225,11 +225,11 @@ export class HttpService {
                     }
                     reject(reason.response || reason);
                 }
-                // finally {
-                //     if (httpWrapperOptions.wait) {
-                //         store.dispatch(decreaseBlockingCallCounter());
-                //     }
-                // }
+                finally {
+                    if (httpWrapperOptions.wait) {
+                        store.dispatch(decreaseBlockingCallCounter());
+                    }
+                }
             })();
         });
 

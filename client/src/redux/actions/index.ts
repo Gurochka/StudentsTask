@@ -11,6 +11,10 @@ export enum ActionType {
     UPDATE_STUDENT = '[Student] Update',
 
     SHOW_MESSAGE = '[Http wrapper] Show message',
+    RESET = '[Http wrapper] Reset',
+    CALLWRAPPER_BLOCKING_CALL_INCREMENT = '[Http wrapper] BlockingCallCount increment',
+    CALLWRAPPER_BLOCKING_CALL_DECREMENT = '[Http wrapper] BlockingCallCount decrement',
+
     SET_DICTIONARIES = '[Resources] Set dictionaries',
 }
 

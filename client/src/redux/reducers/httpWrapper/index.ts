@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux';
-import { MessageState, messageReducer } from './message';
+import { MessageState, message } from './message';
+import { blockingCallCount, BlockingCallCountState } from './blockingCallCount';
 
 export class HttpWrapperState {
-    public message: MessageState
+    message: MessageState;
+    blockingCallCount: BlockingCallCountState;
 }
 
 const httpWrapper = combineReducers<HttpWrapperState>({
-    message: messageReducer
+    message,
+    blockingCallCount
 });
 
 export { httpWrapper };

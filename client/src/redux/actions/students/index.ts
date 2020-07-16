@@ -1,7 +1,7 @@
 import { ActionType, BaseAction, BaseThunkAction } from '..';
 import { StudentViewModel } from '../../../common/model/student/studentViewModel';
 import { ActiveStudentState, ListStudentsState } from '../../reducers/students';
-import { httpService } from '../../../app/shared/httpWrapper';
+import { httpService, HttpWrapperOptions } from '../../../app/shared/httpWrapper';
 
 export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
     type: ActionType.SET_STUDENT,
@@ -24,7 +24,7 @@ export const getStudents = (): BaseThunkAction => {
     return async (dispatch, getState) => {
         const { students: { list } } = getState();
         if (!list || list.length > 10) {
-            const studentsReq = await httpService.get<StudentViewModel[]>('/students');
+            const studentsReq = await httpService.get<StudentViewModel[]>('/students', new HttpWrapperOptions().Wait(true));
             dispatch(setStudents(studentsReq));
         }
     };
