@@ -7,7 +7,7 @@ import LuxonUtils from '@date-io/luxon';
 import luxon from 'luxon';
 
 import { ResourceProvider } from './shared/components/resourceProvider';
-import { RouterContent } from './routes';
+import { RouterContent } from './routing';
 import { store, history } from '../redux/store';
 import { HttpWrapper } from './shared/httpWrapper';
 
