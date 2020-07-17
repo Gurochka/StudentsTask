@@ -46,7 +46,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms', 
         .post(studentCtrl.create);
 
     app.route('/students/:studentId')
-        .get(studentCtrl.getActiveStudent)
+        .get(studentCtrl.getStudent)
         .put(studentCtrl.update)
         .delete(studentCtrl.remove);
 

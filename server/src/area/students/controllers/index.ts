@@ -8,9 +8,9 @@ export class StudentCtrl {
         res.send(students);
     }
 
-    async getActiveStudent (req, res) {
+    async getStudent (req, res) {
         const studentId = +req.params['studentId'];
-        const student = await studentService.getActiveStudent(studentId);
+        const student = await studentService.getStudent(studentId);
         res.send(student);
     }
 

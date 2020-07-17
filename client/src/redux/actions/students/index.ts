@@ -8,7 +8,7 @@ export const setActiveStudent = (student: ActiveStudentState): BaseAction => ({
     payload: student
 });
 
-export const getActiveStudent = (studentId: number | string): BaseThunkAction => {
+export const getStudent = (studentId: number | string): BaseThunkAction => {
     return async (dispatch) => {
         const studentsReq = await httpService.get<StudentViewModel>(`/students/${studentId}`);
         dispatch(setActiveStudent(studentsReq));

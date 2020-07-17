@@ -25,7 +25,7 @@ export class StudentService {
     @GET
     @Tags('students')
     @Path('/students/:studentId')
-    public async getActiveStudent(@PathParam('studentId') studentId: number): Promise<StudentViewModel> {
+    public async getStudent(@PathParam('studentId') studentId: number): Promise<StudentViewModel> {
         const entityManager = studentDBWrapper.getEntityManager();
 
         const student = await entityManager.findOne<Student>(Student, studentId);

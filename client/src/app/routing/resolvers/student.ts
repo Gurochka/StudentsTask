@@ -5,7 +5,7 @@ import { push } from 'connected-react-router';
 
 import { store } from '../../../redux/store';
 import { StudentViewModel } from '../../../common/model/student/studentViewModel';
-import { getActiveStudent } from '../../../redux/actions/students';
+import { getStudent } from '../../../redux/actions/students';
 
 type PathParamsType = {
     studentId: string;
@@ -37,7 +37,7 @@ export const StudentResolver = (viewComponent: any) => {
                         const student_id = this.props.match.params.studentId;
                         try {
                             if (!this.props.student || this.props.student.id !== parseInt(student_id)) {
-                                await store.dispatch(getActiveStudent(student_id));
+                                await store.dispatch(getStudent(student_id));
                             }
                         } catch (err) {
                             reject(err);
