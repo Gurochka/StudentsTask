@@ -1,16 +1,31 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { renderRoutes, RouteConfig } from 'react-router-config';
 import { Home } from '../content/home';
 import { AddStudent } from '../content/students/add';
 import { EditStudent } from '../content/students/edit';
 import { StudentResolver } from './resolvers/student';
 
-export const RouterContent = () => (
-    <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/students/add" exact component={AddStudent} />
-        <StudentResolver path="/students/:studentId" component={EditStudent} />
-        <Route component={Home} />
-    </Switch>
-);
+const routes: RouteConfig[] = [
+    {
+        path: '/',
+        exact: true,
+        component: Home
+    }, {
+        path: '/students',
+        exact: true,
+        component: Home
+    }, {
+        path: '/students/add',
+        exact: true,
+        component: AddStudent
+    }, {
+        path: '/students/:studentId',
+        component: StudentResolver,
+        props: {
+            component: EditStudent
+        }
+    }, {
+        component: Home
+    }
+];
+
+export const RouterContent = renderRoutes(routes);

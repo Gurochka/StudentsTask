@@ -19,7 +19,7 @@ export const View = () => {
                     <MuiPickersUtilsProvider utils={LuxonUtils} libInstance={luxon}>
                         <Box width="50%" mx="auto" my={5}>
                             <Paper elevation={3} className="p-3">
-                                <RouterContent />
+                                { RouterContent }
                             </Paper>
                         </Box>
                         <HttpWrapper />

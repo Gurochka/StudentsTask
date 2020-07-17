@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
-import { Route, RouteProps, match } from 'react-router-dom';
+import { RouteConfigComponentProps } from 'react-router-config';
 
 import { AppDispatch } from '../../../redux/actions';
 
@@ -11,32 +11,22 @@ interface IPathParams {
     studentId: string;
 }
 
-type matchType = match<IPathParams>;
-
-interface IModel extends RouteProps {
+interface IModel {
     component: React.FunctionComponent;
-    computedMatch?: matchType;
 }
 
-export const StudentResolver = ({ component: Component, ...rest }: IModel) => {
+export const StudentResolver = (props: RouteConfigComponentProps<IPathParams>) => {
     const dispatch = useDispatch<AppDispatch>();
-
-    const studentId = rest.computedMatch ? rest.computedMatch.params.studentId : null;
-
     const [loaded, setLoaded] = useState<boolean | null>(null);
 
+    const studentId = props.match.params.studentId;
+
     const getStudentAsync = useCallback(async () => {
-        if (!studentId) {
-            return false;
-        }
         await dispatch(getStudent(studentId));
         return true;
     }, [studentId, dispatch]);
 
     useEffect(() => {
-        if (!studentId) {
-            return;
-        }
         getStudentAsync()
             .then((res) => setLoaded(res))
             .catch(() => {
@@ -44,12 +34,9 @@ export const StudentResolver = ({ component: Component, ...rest }: IModel) => {
             });
     }, [dispatch, studentId, getStudentAsync]);
 
-    const renderFn = () => {
-        if (loaded === true) {
-            return <Component />;
-        }
-        return null;
-    };
-
-    return <Route {...rest} render={renderFn} />;
+    if (props.route && loaded === true) {
+        const { component: Component }: IModel = props.route.props;
+        return <Component />;
+    }
+    return null;
 };
