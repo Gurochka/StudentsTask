@@ -2,6 +2,7 @@ import { renderRoutes, RouteConfig } from 'react-router-config';
 import { Home } from '../content/home';
 import { AddStudent } from '../content/students/add';
 import { EditStudent } from '../content/students/edit';
+import { StudentResolver } from './resolvers/student';
 
 const routes: RouteConfig[] = [
     {
@@ -14,7 +15,7 @@ const routes: RouteConfig[] = [
         component: AddStudent
     }, {
         path: '/students/:studentId',
-        component: EditStudent
+        component: StudentResolver(EditStudent)
     }, {
         component: Home
     }
