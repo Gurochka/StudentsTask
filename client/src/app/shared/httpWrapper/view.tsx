@@ -20,8 +20,9 @@ export const View = (props: IModel) => {
             open={!!message}
             onClose={props.onClose}
             anchorOrigin={anchorOrigin}
+            autoHideDuration={7000}
         >
-            <Box bgcolor={`${message?.type}.main`} color="background.paper" px={3} py={1} component={Paper}>
+            <Box bgcolor={`${message?.type}.main`} px={3} py={1} component={Paper}>
                 <div className="d-flex justify-content-between align-items-center">
                     <Typography variant="body2" className="mr-5">{message?.message}</Typography>
                     <IconButton size="small" aria-label="close" color="inherit" onClick={props.onClose}>
