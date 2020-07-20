@@ -19,10 +19,7 @@ const routes: RouteConfig[] = [
         component: AddStudent
     }, {
         path: '/students/:studentId',
-        component: StudentResolver,
-        props: {
-            component: EditStudent
-        }
+        component: StudentResolver(EditStudent)
     }, {
         component: Home
     }

@@ -11,11 +11,7 @@ interface IPathParams {
     studentId: string;
 }
 
-interface IModel {
-    component: React.FunctionComponent;
-}
-
-export const StudentResolver = (props: RouteConfigComponentProps<IPathParams>) => {
+export const StudentResolver = (Component: React.FC) => function StudentResolverWrapper (props: RouteConfigComponentProps<IPathParams>) {
     const dispatch = useDispatch<AppDispatch>();
     const [loaded, setLoaded] = useState<boolean | null>(null);
 
@@ -23,17 +19,16 @@ export const StudentResolver = (props: RouteConfigComponentProps<IPathParams>) =
 
     useEffect(() => {
         (async () => {
-            try{
+            try {
                 await dispatch(getStudent(studentId));
                 setLoaded(true);
-            } catch (err){
+            } catch (err) {
                 dispatch(push('/students'));
             }
-        })()
+        })();
     }, [dispatch, studentId]);
 
     if (props.route && loaded === true) {
-        const { component: Component }: IModel = props.route.props;
         return <Component />;
     }
     return null;
